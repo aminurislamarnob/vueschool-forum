@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/pages/ForumHome.vue'
 import PageThreadShow from '@/pages/ThreadShow'
 import PageNotFound from '@/pages/NotFound'
+import PageCategory from '@/pages/CategoryShow'
 import sourceData from '@/data.json'
 
 const routes = [
@@ -30,6 +31,12 @@ const routes = [
                 })
             }
         }
+    },
+    { 
+        path: '/forum/category/:id',
+        name: 'Category',
+        component: PageCategory,
+        props: true,
     },
     { 
         path: '/:pathMatch(.*)*', 
