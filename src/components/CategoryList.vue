@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import sourceData from '@/data.json';
 import ForumList from '@/components/ForumList.vue';
 export default {
     props: {
@@ -12,10 +11,12 @@ export default {
             required: true
         }
     },
-    components: { ForumList },
-    data(){
-        return{
-            forums: sourceData.forums,
+    components: { 
+        ForumList 
+    },
+    computed:{
+        forums(){
+            return this.$store.state.forums;
         }
     },
     methods:{

@@ -12,7 +12,6 @@
     </div>
 </template>
 <script>
-import sourceData from '@/data.json';
 import PostLists from '@/components/PostLists.vue'
 import PostEditor from '@/components/PostEditor.vue'
 export default {
@@ -26,19 +25,21 @@ export default {
             type: String
         }
     },
-    data(){
-        return{
-            threads: sourceData.threads,
-            posts: sourceData.posts,
-            users: sourceData.users,
-        }
-    },
     computed: {
+        threads(){
+            return this.$store.state.threads;
+        },
+        posts(){
+            return this.$store.state.posts;
+        },
+        users(){
+            return this.$store.state.users;
+        },
         thread(){
-            return this.threads.find(t => t.id === this.id);
+            return this.$store.state.threads.find(t => t.id === this.id);
         },
         threadPosts(){
-            return this.posts.filter(post => post.threadId === this.id);
+            return this.$store.state.posts.filter(post => post.threadId === this.id);
         }
     },
     methods: {
@@ -46,12 +47,11 @@ export default {
             return this.users.find(u => u.id === userID);
         },
         savePost(event){
-            const newPost = {
+            const post = {
                 ...event.post,
                 threadId: this.id
             }
-            this.posts.push(newPost);
-            this.threads.push(newPost.id);
+            this.$store.dispatch('savePost', { post });
         }
     }
 }

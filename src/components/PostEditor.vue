@@ -22,12 +22,11 @@ export default {
     methods:{
         save(){
             const post = {
-                id: 'ggg' + Math.random(),
                 publishedAt: Math.floor(Date.now() / 1000),
                 text: this.text,
                 userId: '38St7Q8Zi2N1SPa5ahzssq9kbyp1'
             }
-            this.$emit('save', {post});
+            this.$emit('save', { post });
 
             this.text = '';
         }

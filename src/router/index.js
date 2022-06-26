@@ -3,6 +3,7 @@ import PageHome from '@/pages/ForumHome.vue'
 import PageThreadShow from '@/pages/ThreadShow'
 import PageNotFound from '@/pages/NotFound'
 import PageCategory from '@/pages/CategoryShow'
+import PageForum from '@/pages/ForumShow'
 import sourceData from '@/data.json'
 
 const routes = [
@@ -10,6 +11,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: PageHome,
+    },
+    { 
+        path: '/forum/:id',
+        name: 'Forum',
+        component: PageForum,
+        props: true,
     },
     { 
         path: '/thread/:id',
@@ -33,7 +40,7 @@ const routes = [
         }
     },
     { 
-        path: '/forum/category/:id',
+        path: '/category/:id',
         name: 'Category',
         component: PageCategory,
         props: true,

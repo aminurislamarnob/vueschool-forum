@@ -2,12 +2,12 @@
     <div class="col-full">
         <div class="forum-list">
             <h2 class="list-title">
-                <router-link v-if="categoryId" :to="`/forum/category/${categoryId}`">{{ categoryTitle }}</router-link>
+                <router-link v-if="categoryId" :to="`/category/${categoryId}`">{{ categoryTitle }}</router-link>
                 <span v-else>{{ categoryTitle }}</span>
             </h2>
             <div v-for="forum in categoryForums" :key="forum.id" class="forum-listing">
                 <div class="forum-details">
-                    <a class="text-xlarge" href="#">{{ forum.name }}</a>
+                    <router-link class="text-xlarge" :to="`/forum/${forum.id}`">{{ forum.name }}</router-link>
                     <p>{{ forum.description }}</p>
                 </div>
                 <div class="threads-count">

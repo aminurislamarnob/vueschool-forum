@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import sourceData from '@/data.json';
 import ForumList from '@/components/ForumList.vue';
 export default {
     props: {
@@ -15,15 +14,12 @@ export default {
         }
     },
     components: { ForumList },
-    data(){
-        return{
-            categories: sourceData.categories,
-            forums: sourceData.forums,
-        }
-    },
     computed:{
         category(){
-            return this.categories.find(category => category.id === this.id)
+            return this.$store.state.categories.find(category => category.id === this.id)
+        },
+        forums(){
+            return this.$store.state.forums;
         }
     },
     methods:{
