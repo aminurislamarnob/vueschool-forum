@@ -51,7 +51,7 @@ export default {
                 ...event.post,
                 threadId: this.id
             }
-            this.$store.dispatch('savePost', { post });
+            this.$store.dispatch('createPost', { post });
         }
     }
 }

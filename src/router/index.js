@@ -4,6 +4,7 @@ import PageThreadShow from '@/pages/ThreadShow'
 import PageNotFound from '@/pages/NotFound'
 import PageCategory from '@/pages/CategoryShow'
 import PageForum from '@/pages/ForumShow'
+import PageProfile from '@/pages/MyProfile'
 import sourceData from '@/data.json'
 
 const routes = [
@@ -17,6 +18,21 @@ const routes = [
         name: 'Forum',
         component: PageForum,
         props: true,
+    },
+    { 
+        path: '/profile',
+        name: 'Profile',
+        component: PageProfile,
+        meta: {
+            toTop: true,
+            smoothScroll: true
+        }
+    },
+    { 
+        path: '/profile/edit',
+        name: 'ProfileEdit',
+        component: PageProfile,
+        props: {edit:true}
     },
     { 
         path: '/thread/:id',
@@ -54,6 +70,12 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),
+    scrollBehavior(to) {
+        const scroll = {};
+        if(to.meta.toTop) scroll.top = 0;
+        if(to.meta.smoothScroll) scroll.behavior = 'smooth'
+        return scroll
+    },
     routes
 })
 
